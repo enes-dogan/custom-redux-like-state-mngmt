@@ -18,6 +18,29 @@ export interface CardProps {
   style?: React.CSSProperties;
 }
 
-export type listenerFn = (
-  setState: React.Dispatch<React.SetStateAction<any>> // global state type here
+// Custom Redux-like Store Types
+
+export type globalStateType = {
+  products: {
+    id: string;
+    title: string;
+    description: string;
+    isFavorite: boolean;
+  }[];
+};
+
+export type listenerFn = (state: globalStateType) => void;
+
+export type actionFn = (
+  curState: globalStateType,
+  payload: string
+) => globalStateType;
+
+export interface actionsType {
+  [key: string]: actionFn;
+}
+
+export type dispatchFn = (
+  actionIdentifier: keyof actionsType,
+  payload: string
 ) => void;

@@ -2,10 +2,9 @@ import { FavoriteItemProps } from '../../types.ts';
 
 import Card from '../UI/Card.tsx';
 
-export default function FavoriteItem({
-  title,
-  description,
-}: FavoriteItemProps) {
+export default function FavoriteItem(props: FavoriteItemProps) {
+  const { title, description } = props;
+
   return (
     <Card style={{ marginBottom: '1rem' }}>
       <div className="favorite-item">

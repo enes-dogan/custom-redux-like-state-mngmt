@@ -1,12 +1,16 @@
-import { ProductItemProps } from '../../types.ts';
+import { memo } from 'react';
+import { useStore } from '../../store';
+import { ProductItemProps, dispatchFn } from '../../types.ts';
 
 import Card from '../UI/Card.tsx';
 
-export default function ProductItem(props: ProductItemProps) {
-  const { title, description, isFav } = props;
+const ProductItem = memo((props: ProductItemProps) => {
+  const dispatch = useStore(false)[1] as dispatchFn;
+
+  const { id, title, description, isFav } = props;
 
   const toggleFavHandler = () => {
-    // ...
+    dispatch('TOGGLE_FAV', id);
   };
 
   return (
@@ -23,4 +27,6 @@ export default function ProductItem(props: ProductItemProps) {
       </div>
     </Card>
   );
-}
+});
+
+export default ProductItem;
