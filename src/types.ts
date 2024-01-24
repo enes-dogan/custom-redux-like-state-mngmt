@@ -17,3 +17,7 @@ export interface CardProps {
   children: React.ReactNode;
   style?: React.CSSProperties;
 }
+
+export type listenerFn = (
+  setState: React.Dispatch<React.SetStateAction<any>> // global state type here
+) => void;
